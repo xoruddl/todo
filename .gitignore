@@ -2,3 +2,8 @@
 /.gradle/
 /build/
 /build/classes/java/main/
+
+# Environment (보안상 커밋 금지)
+.env
+.env.prod
+.env.local
