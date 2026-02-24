@@ -1,0 +1,17 @@
+# 프로덕션용 Docker Compose
+# EC2에서 사용 (DB는 RDS 사용)
+
+services:
+  api:
+    image: 418272758232.dkr.ecr.ap-northeast-2.amazonaws.com/todo-api:latest
+    container_name: todo-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_DRIVER=org.postgresql.Driver
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
+    restart: unless-stopped
